@@ -18,4 +18,5 @@ public class DayRealmObject extends RealmObject {
     public void setCostsList(RealmList<CostRealmObject> costsList) {
         this.costsList = costsList;
     }
+
 }

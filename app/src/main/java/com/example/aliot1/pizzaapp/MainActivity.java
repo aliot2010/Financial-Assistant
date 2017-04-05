@@ -12,16 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import Adapters.CaptionImageAdapter;
+import realmClasses.RealmObjectConstructor;
 
 public class MainActivity extends AppCompatActivity {
-
-    private  int []captions={R.string.circule_pizza_fat, R.string.square_pizza_fat,
-                            R.string.rectangle_pizza_fat, R.string.circule_pizza_tiny,
-                            R.string.square_pizza_tiny, R.string.rectangle_pizza_tiny};
-    private int[] images={R.drawable.circule_fat, R.drawable.square,
-                        R.drawable.rectungle_fat, R.drawable.slaid2pizza,
-                        R.drawable.rabstol_net_pizza_15, R.drawable.rectungle};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-        CaptionImageAdapter adapter=new CaptionImageAdapter(captions, images);
+
+
+        RealmObjectConstructor objectConstructor = new RealmObjectConstructor(this.getBaseContext());
+        CaptionImageAdapter adapter=new CaptionImageAdapter(objectConstructor.getDayCostList());
+
+
+
         recyclerView.setAdapter(adapter);
 
         GridLayoutManager gridLayoutManager=new GridLayoutManager(this, 1);
