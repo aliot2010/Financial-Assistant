@@ -16,4 +16,6 @@ public class CostRealmObject extends RealmObject {
     public void setCost(Integer cost) {
         this.cost = cost;
     }
+
+
 }

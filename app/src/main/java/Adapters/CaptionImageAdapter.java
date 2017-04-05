@@ -1,25 +1,28 @@
 package Adapters;
 
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aliot1.pizzaapp.R;
+
+import java.util.List;
+
+import realmClasses.CostRealmObject;
 
 /**
  * Created by aliot on 13.09.2016.
  */
 public class CaptionImageAdapter extends RecyclerView.Adapter<CaptionImageAdapter.ViewHolder> {//переименовать класс
 
-    private  int[] captions;
-    private int[] images;
+    private  List<CostRealmObject> listOfCosts;
 
-    public CaptionImageAdapter(int[] captions, int[] images) {//вместо массивов передовать объекты "дни" с массивами трат
-        this.captions = captions;
-        this.images = images;
+    public CaptionImageAdapter(List<CostRealmObject> listOfCosts) {//вместо массивов передовать объекты "дни" с массивами трат
+
+        this.listOfCosts = listOfCosts;
     }
 
 
@@ -27,24 +30,30 @@ public class CaptionImageAdapter extends RecyclerView.Adapter<CaptionImageAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         CardView cv=(CardView) LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.card_captioned_image, parent, false);//card caption image меняем на day_day_card
+                inflate(R.layout.day_card, parent, false);
         return new ViewHolder(cv);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-            CardView cardView = holder.cardView;
-        ImageView imageView=(ImageView) cardView.findViewById(R.id.info_image);
+        CardView cardView = holder.cardView;
+        TextView costTextView = (TextView) cardView.findViewById(R.id.costTextView);
 
-        imageView.setImageDrawable(cardView.getResources().getDrawable(images[position]));
-        //imageView.setContentDescription(captions[position]);
-        TextView textView = (TextView)cardView.findViewById(R.id.info_text);
-        textView.setText(captions[position]);
+        costTextView.setText((listOfCosts.get(position)).getCost().toString());
+        setTextColor(costTextView, listOfCosts.get(position).getCost() < 0 );
+    }
+
+    private  void  setTextColor(TextView textView, boolean isNegative){
+        if (isNegative) {
+            textView.setTextColor(Color.RED);
+        } else {
+            textView.setTextColor(Color.GREEN);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return captions.length;
+        return listOfCosts.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
