@@ -7,16 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.List;
-
 import Adapters.CaptionImageAdapter;
-import realmClasses.CostRealmObject;
-import realmClasses.RealmObjectConstructor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        System.out.print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        testBD();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -58,20 +50,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void testBD(){
-//        RealmObjectConstructor objectConstructor = new RealmObjectConstructor(this.getBaseContext());
-//        objectConstructor.setCostToDatbase(4);
-//        objectConstructor.setCostToDatbase(6);
-//       // RealmList<CostRealmObject> list = objectConstructor.getDayCostList();
-//        List<CostRealmObject> list =   objectConstructor.getDayCostList();//Realm.getInstance(getApplicationContext()).allObjects(CostRealmObject.class);
-//        for (CostRealmObject cost : list){
-//            System.out.print(cost.getCost());
-//            Log.i("SQLite", cost.getCost().toString());
-//        }
-//        objectConstructor.closeRealm();
-//    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

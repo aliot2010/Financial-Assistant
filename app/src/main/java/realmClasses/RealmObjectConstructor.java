@@ -11,13 +11,10 @@ import io.realm.Realm;
  */
 
 public class RealmObjectConstructor {
-
-    private Context context;
     private Realm realm;
     private RealmObjectConstructor() {}
 
     public RealmObjectConstructor(Context context) {
-        //this.context = context;
         realm = Realm.getInstance(context);
     }
 
