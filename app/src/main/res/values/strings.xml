@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PizzaApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="choose_basis_for_pizza">Выберите основу для пиццы</string>
+    <string name="square_pizza_fat">Квадратная толстая</string>
+    <string name="circule_pizza_fat">Круглая толстая</string>
+    <string name="rectangle_pizza_fat">Прямоугольная толстая</string>
+    <string name="rectangle_pizza_tiny">Прямоугольная тонкая</string>
+    <string name="circule_pizza_tiny">Круглая тонкая</string>
+    <string name="square_pizza_tiny">Квадратная тонкая</string>
+
+</resources>
